@@ -1,81 +1,95 @@
-Informe_Clientes · Prioridad comercial sin saturar
-
-Este repositorio contiene un informe de Power BI y un script de Python para generar datos de ejemplo. El objetivo es mostrar cómo priorizar zonas/clientes en función de su recencia de compra y evitar la saturación comercial.
-
+# Informe_Clientes · Prioridad comercial sin saturar
 Contenido
 
-Informe_Clientes.pbix – Informe en Power BI Desktop.
+📊 Informe_Clientes.pbix (Power BI)
 
-customers.xlsx, reps.xlsx, sales.xlsx – Datos de ejemplo.
+📁 customers.xlsx, reps.xlsx, sales.xlsx (datos de ejemplo)
 
-generate_powerbi_seed.py – Script opcional para (re)generar los ficheros Excel.
+🐍 generate_powerbi_seed.py (opcional para regenerar Excel)
 
-README.md – Este documento.
+📝 README.md
 
-Requisitos
+# Requisitos
 
-Power BI Desktop (cualquier versión reciente).
+💻 Power BI Desktop
 
-Python 3.9+ (solo si quieres regenerar los Excel).
+🐍 Python 3.10+ si quieres generar los Excel (pandas, numpy)
 
-Librerías: pandas, numpy (instalación abajo).
+# Uso rápido
 
-Cómo usarlo (rápido)
+⬇️ Descarga o clona el repo
 
-Descarga o clona el repositorio.
+▶️ Abre Informe_Clientes.pbix
 
-Abre Informe_Clientes.pbix en Power BI Desktop.
+🔧 Ve a Transformar datos → Power Query
 
-Ve a Transformar datos → Power Query y cambia la ruta de origen de cada consulta:
+🛠️ Parámetro de Power Query: usa un único parámetro (p. ej. UNIDAD_ARCHIVOS) para la carpeta que contiene customers.xlsx, reps.xlsx, sales.xlsx.
 
-Selecciona la consulta (customers, reps, sales) → icono del engranaje en Fuente → apunta al archivo .xlsx de tu carpeta local.
+🧭 Dónde cambiarlo: Inicio → Administrar parámetros → Editar parámetros → establece UNIDAD_ARCHIVOS a tu carpeta local.
+
+🔁 Ventaja: todas las consultas leen la ruta desde UNIDAD_ARCHIVOS; no hay que editar cada origen.
+
+▶️ Pasos:
+
+Abre Informe_Clientes.pbix.
+
+Ve a Transformar datos.
+
+Editar parámetros → define UNIDAD_ARCHIVOS.
 
 Cerrar y aplicar.
 
-Ajusta los deslizadores (MinDays / MaxDays) y los filtros (rep, ciudad, fechas) para ver cómo cambian las prioridades.
+✅ Cerrar y aplicar
 
-Si aparece un aviso de permisos de origen, ve a Archivo → Opciones y configuración → Orígenes de datos y edita/elimina permisos para volver a aceptar la ubicación local.
+🎚️ Ajusta MinDays / MaxDays y usa filtros de rep, ciudad/ZIP y fechas
 
-Regenerar los datos (opcional)
+# Qué incluye el informe
 
-Si prefieres crear nuevos datos sintéticos:
+🔗 Modelo simple: customers ↔ sales y reps ↔ customers
 
-# (opcional) crear y activar entorno virtual
-# python -m venv .venv
-# .venv\Scripts\activate  (Windows)   |   source .venv/bin/activate (macOS/Linux)
+🧭 Flags: Saturado, Desatendido, Saludable basados en recencia
 
-pip install pandas numpy
-python generate_powerbi_seed.py
+🎯 KPIs y mapa para decidir dónde actuar sin saturar
+
+🕹️ Parámetros de días para una ventana de acción dinámica
+
+# Regenerar datos (opcional)
+
+▶️ Ejecuta generate_powerbi_seed.py para crear/sobrescribir customers.xlsx, reps.xlsx, sales.xlsx
+
+🧩 Si cambias esquemas, actualiza las consultas en Power Query
+
+# Personalización
+
+🛠️ Sustituye los Excel por tus orígenes reales
+
+⚙️ Revisa relaciones del modelo
+
+🎚️ Ajusta umbrales y medidas a tu negocio
+
+# Datos
+
+📎 Los Excel son sintéticos y se usan solo para demostración
+
+# Contacto
+
+📧 luiscontacto3@gmail.com
+
+💼 LinkedIn (mensaje directo)
 
 
-El script sobrescribe/crea customers.xlsx, reps.xlsx, sales.xlsx en la carpeta del repo.
+# Descargo de responsabilidad
 
-¿Qué contiene el informe?
+⚠️ Este proyecto se ofrece “tal cual”, sin garantías de ningún tipo.
 
-Modelo simple con tres tablas: customers, reps, sales.
+🧪 Es material demostrativo/educativo; los datos son sintéticos.
 
-Cálculos de recencia y banderas de estado (Saturado, Desatendido, Saludable).
+🛠️ Úsalo bajo tu responsabilidad: valida cálculos antes de tomar decisiones.
 
-Parámetros MinDays/MaxDays para ajustar la ventana de acción.
+🔒 El tratamiento de datos reales, privacidad y seguridad depende de ti.
 
-KPIs y un mapa para decidir dónde actuar y a quién contactar según el contexto (representante, ciudad/ZIP, periodo).
+🗂️ Cambiar rutas/parámetros puede romper el modelo; haz copias de seguridad.
 
-Puedes adaptar las medidas y las reglas a tu negocio. La idea es que el informe sea didáctico y fácil de trasladar a datos reales.
+💥 No asumo responsabilidad por pérdidas, daños o costes derivados del uso.
 
-Personalización recomendada
-
-Sustituye los Excel por tus tablas reales (mismos campos o ajusta en Power Query).
-
-Revisa relaciones customers → sales y reps → customers.
-
-Ajusta umbrales en los deslizadores y las reglas de negocio de las medidas.
-
-Datos
-
-Los ficheros .xlsx son sintéticos y sirven únicamente para demostración.
-
-Contacto
-
-Cualquier duda o sugerencia: luiscontacto3@gmail.com
-
-También puedes escribirme por LinkedIn.
+📨 Soporte best-effort, sin SLA ni compromiso de mantenimiento.
